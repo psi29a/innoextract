@@ -215,6 +215,16 @@ if(NOT Boost_FOUND)
 	endif()
 endif()
 if(NOT Boost_FOUND)
+	# Report where we looked - a bare "not found" gives no way to tell whether
+	# the hint variables were unset, pointed somewhere wrong, or the install is
+	# simply incomplete.
+	message(STATUS "Boost_ROOT: '${Boost_ROOT}'")
+	message(STATUS "BOOST_ROOT variable: '${BOOST_ROOT}'")
+	message(STATUS "BOOST_ROOT environment: '$ENV{BOOST_ROOT}'")
+	message(STATUS "BOOSTROOT environment: '$ENV{BOOSTROOT}'")
+	message(STATUS "BOOST_INCLUDEDIR environment: '$ENV{BOOST_INCLUDEDIR}'")
+	message(STATUS "BOOST_LIBRARYDIR environment: '$ENV{BOOST_LIBRARYDIR}'")
+	message(STATUS "CMAKE_PREFIX_PATH: '${CMAKE_PREFIX_PATH}'")
 	message(FATAL_ERROR "Could not find Boost with the "
 	                    "${INNOEXTRACT_BOOST_COMPONENTS} components.")
 endif()
